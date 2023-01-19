@@ -1,0 +1,151 @@
+<link href="plugins/dropify/css/dropify.min.css" rel="stylesheet">
+<div class="row">
+
+
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h4 class="card-title">My Profile</h4>
+                    </div><!--end col-->
+                </div>  <!--end row-->
+            </div><!--end card-header-->
+            <div class="panel-body user-profile-panel">
+                <div class="text-center m-3">
+                    <img src="/images/users/default-user.png" class="user-profile-image img-circle"
+                    alt="" style=" width:120px; height:120px ;object-fit:cover; border-radius:300px; border:2px solid #1A7BB7; margin:auto; ">
+
+                </div>
+                <h4 class="text-center m-t-lg">Sammy James</h4>
+                <hr>
+                <ul class="list-unstyled text-center">
+                    <li>
+                        <p><i class="fa fa-map-marker m-r-xs"></i>Bank Name</p>
+                    </li>
+                    <li>
+                        <p><i class="fa fa-paper-plane-o m-r-xs"></i><a href="#">Email Address</a></p>
+                    </li>
+                    <li>
+                        <p><i class="fa fa-phone m-r-xs"></i><a href="#">Phone Number</a></p>
+                    </li>
+                      <li>
+                        <p><i class="fa fa-phone m-r-xs"></i><a href="#">Endorsed By: Name of Endorsee</a></p>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+            <div class="col-md-12">
+
+                <form action="" method="POST" enctype="multipart/form-data">
+                   
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Upload Profile Picture</h4>
+                            <p class="text-muted mb-0">Click or drag your file here</p>
+                        </div><!--end card-header-->
+                        <div class="card-body">
+                            <input type="file" id="input-file-now" name="image" class="dropify" />
+                            <br>
+                            <div class="row text-center">
+                                <div class="col-md-12">
+                                    <button type="submit" class=" btn btn-primary btn-auth">Update Profile image <i
+                                            class="fa fa-upload" aria-hidden="true"></i></button>
+                                </div>
+
+                            </div>
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+
+                </form>
+
+
+    </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h4 class="card-title">Personal Information</h4>
+                    </div><!--end col-->
+                </div>  <!--end row-->
+            </div><!--end card-header-->
+            <div class="card-body">
+
+                <form action="" method="POST" >
+                   
+                    <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control " id="name" name="name" aria-describedby="emailHelp" value="{{ user.['name'] }}">
+                               
+                            </div>
+                            <br>
+                            <div class="mb-3 col-md-6">
+                                <label for="last_name" class="form-label">Email Address</label>
+                                <input type="text" class="form-control " id="email" name="email" aria-describedby="emailHelp" value="{{ user.['email'] }}">
+                              
+                            </div>
+                            <br>
+                            <div class="mb-3 col-md-6">
+                                <label for="last_name" class="form-label">Bank Name</label>
+                                <input type="text" class="form-control " id="bank" name="bank" aria-describedby="bank" value="{{ user.['bank'] }}">
+                              
+                            </div>
+                             <div class="mb-3 col-md-6">
+                                <label for="last_name" class="form-label">Current Parish in place of residence</label>
+                                <input type="text" class="form-control " id="parish" name="parish" aria-describedby="emailHelp" value="{{ user.['parish'] }}">
+                              
+                            </div>
+                             <div class="mb-3 col-md-6">
+                                <label for="last_name" class="form-label">Diocese</label>
+                                <input type="text" class="form-control " id="diocese" name="diocese" aria-describedby="emailHelp" value="{{ user.['diocese'] }}">
+                              
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <h4 class="text-muted">CONTACT INFO</h4>
+                            <hr>
+                            <div class="mb-3 col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="number" class="form-control" id="phone" name="phone" aria-describedby="emailHelp" value="{{ user.['phone'] }}">
+                                
+                            </div>
+                            <br>
+
+
+                            <div class="mb-3 col-md-6">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" name="city" aria-describedby="emailHelp" value="{{ user.['address'] }}">
+                             
+                            </div>
+                            <br>
+                           
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp" value="{{ user.['address'] }}">
+                            </div>
+                            <br>
+
+                            <div class="row text-center">
+                                <div class="col-md-12">
+                                    <button type="submit" class=" btn btn-primary btn-auth">Update Profile <i
+                                            class="fa fa-long-arrow-up" aria-hidden="true"></i></button>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>

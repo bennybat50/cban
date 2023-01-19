@@ -1,0 +1,48 @@
+{
+    "sliders":[
+        {
+            "img":"",
+            "caption":"Raise your helping hand",
+            "text":"Help the poor and needy by giving",
+            "route":"/about"
+        },
+        {
+            "img":"",
+            "caption":"Catholic Bankers Association",
+            "text":"Promoting Christ and the common good",
+            "route":"/about"
+        },
+        {
+            "img":"",
+            "caption":"Enhancing the spiritual lives of bankers through service",
+            "text":"To engage  in and promote humanitarian services",
+            "route":"/donate"
+        }           
+                
+    ],
+    "resources":[
+        {
+            "icon":"https://catholicbankers.com/images/basketball.png",
+            "img":"https://catholicbankers.com/images/23.jpg",
+            "caption":"PHILANTHROPHY",
+            "text":"We accept free will donations from individuals and organizations interested in our mission."
+        },
+        {
+            "icon":"https://catholicbankers.com/images/coin.png",
+            "img":"https://catholicbankers.com/images/02.jpg",
+            "caption":"PERSONAL DONATION",
+            "text":"There are lot of activities going on in what we do, you can volunteer to be part of this."
+        },
+        {
+            "icon":"https://catholicbankers.com/images/globe.png",
+            "img":"https://catholicbankers.com/images/03.jpg",
+            "caption":"CSR",
+            "text":"Collaboration and funding from national and international agencies ."
+        }
+    ],
+    "causes":"We are an association inspired with the drive to serve, empower and educate.",
+    "gallery":{
+        "caption":"MAKE SOMEONE’S LIFE BY GIVING.",
+        "descp":"We aim at advancing the Catholic faith and witnessing to our Lord Jesus Christ by improving the lives of others. ."
+    }
+}

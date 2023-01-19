@@ -1,0 +1,289 @@
+<link href="plugins/dropify/css/dropify.min.css" rel="stylesheet">
+
+<form action="manage-home" method="post" id="wizardForm" class="form-parsley" role="form" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <h4 class="card-title">Slider Section</h4>
+                </div>
+
+            </div>
+        </div>
+        <!--end card-header-->
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="text-dark">Slider 1</h4>
+                            <hr>
+                            <div class="form-group ">
+                                <label for="title">Title </label>
+                                <input id="title" type="text" class="form-control " name="caption1" required
+                                    placeholder="Enter caption for slider 1" value="{{homeData.sliders.[0].caption}}">
+                            </div>
+                            <div class="form-group ">
+                                <label for="subtitle">Subtitle </label>
+                                <input id="subtitle" type="text" class="form-control" name="text1" required
+                                    placeholder="Enter subtitle for slider 1" value="{{homeData.sliders.[0].text}}">
+                            </div>
+                            <div class="form-group ">
+                                <label for="subtitle">Slider 1 Image </label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="file" id="input-file-now" name="img1" class="dropify"
+                                            data-height="90" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{homeData.sliders.[0].img}}" alt=""
+                                            style="height: 100px; width:100%; object-fit:cover;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-dark">Slider 2</h4>
+                            <hr>
+                            <div class="form-group ">
+                                <label for="title">Title </label>
+                                <input id="title" type="text" class="form-control " name="caption2" required
+                                    placeholder="Enter caption for slider 2" value="{{homeData.sliders.[1].caption}}">
+                            </div>
+                            <div class="form-group ">
+                                <label for="subtitle">Subtitle </label>
+                                <input id="subtitle" type="text" class="form-control " name="text2" required
+                                    placeholder="Enter subtitle for slider 2" value="{{homeData.sliders.[1].text}}">
+                            </div>
+                            <div class="form-group ">
+                                <label for="subtitle">Slider 2 Image </label>
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="file" id="input-file-now" name="img2" class="dropify"
+                                            data-height="90" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{homeData.sliders.[1].img}}" alt=""
+                                            style="height: 100px; width:100%; object-fit:cover;">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-dark">Slider 3</h4>
+                            <hr>
+                            <div class="form-group ">
+                                <label for="title">Title </label>
+                                <input id="title" type="text" class="form-control " name="caption3" required
+                                    placeholder="Enter caption for slider 3" value="{{homeData.sliders.[2].caption}}">
+                            </div>
+                            <div class="form-group ">
+                                <label for="subtitle">Subtitle </label>
+                                <input id="subtitle" type="text" class="form-control " name="text3" required
+                                    placeholder="Enter subtitle for slider 3" value="{{homeData.sliders.[2].text}}">
+                            </div>
+                            <div class="form-group ">
+                                <label for="subtitle">Slider 3 Image </label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="file" id="input-file-now" name="img3" class="dropify"
+                                            data-height="90" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{homeData.sliders.[2].img}}" alt=""
+                                            style="height: 100px; width:100%; object-fit:cover;">
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end card-body-->
+    </div>
+    <!--end card-->
+    <br>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <h4 class="card-title">Who We Are Section</h4>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-dark">Resources</h4>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-group ">
+                                                <label for="resource_caption1">Resource Caption 1 </label>
+                                                <input id="resource_caption1" type="text" class="form-control "
+                                                    name="resource_caption1" required
+                                                    placeholder="Enter caption for Caption 1"
+                                                    value="{{homeData.resources.[0].caption}}">
+                                            </div>
+                                            <div class="form-group ">
+                                                <label for="resource_text1">Resource Description 1 </label>
+                                                <input id="resource_text1" type="text" class="form-control "
+                                                    value="{{homeData.resources.[0].text}}"
+                                                    name="resource_text1" required placeholder="Enter Description 1">
+                                            </div>
+                                            <div class="form-group ">
+                                                <label for="subtitle">Image 1 </label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="file" id="input-file-now" name="resource_img1"
+                                                            class="dropify" data-height="90" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <img src="{{homeData.resources.[0].img}}" alt=""
+                                                            style="height: 100px; width:100%; object-fit:cover;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-group ">
+                                                <label for="resource_caption2">Resource Caption 2 </label>
+                                                <input id="resource_caption2" type="text" class="form-control "
+                                                    name="resource_caption2" required
+                                                    value="{{homeData.resources.[1].caption}}"
+                                                    placeholder="Enter caption for Caption 2">
+                                            </div>
+                                            <div class="form-group ">
+                                                <label for="resource_text2">Resource Description 2 </label>
+                                                <input id="resource_text2" type="text" class="form-control "
+                                                    value="{{homeData.resources.[1].text}}"
+                                                    name="resource_text2" required placeholder="Enter Description 1">
+                                            </div>
+                                            <div class="form-group ">
+                                                <label for="subtitle">Image 2 </label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="file" id="input-file-now" name="resource_img2"
+                                                            class="dropify" data-height="90" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <img src="{{homeData.resources.[1].img}}" alt=""
+                                                            style="height: 100px; width:100%; object-fit:cover;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-group ">
+                                                <label for="resource_caption3">Resource Caption 3 </label>
+                                                <input id="resource_caption3" type="text" class="form-control "
+                                                    name="resource_caption3" required
+                                                    value="{{homeData.resources.[2].caption}}"
+                                                    placeholder="Enter caption for Caption 3">
+                                            </div>
+                                            <div class="form-group ">
+                                                <label for="resource_text3">Resource Description 3 </label>
+                                                <input id="resource_text3" type="text" class="form-control "
+                                                    value="{{homeData.resources.[2].text}}"
+                                                    name="resource_text3" required placeholder="Enter Description 3">
+                                            </div>
+                                            <div class="form-group ">
+                                                <label for="subtitle">Image 3 </label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="file" id="input-file-now" name="resource_img3"
+                                                            class="dropify" data-height="90" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <img src="{{homeData.resources.[2].img}}" alt=""
+                                                            style="height: 100px; width:100%; object-fit:cover;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <h4 class="card-title">Causes Section</h4>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Causes Side</h4>
+                    <div class="form-group ">
+                        <label for="causes">Causes Text </label>
+                        <textarea name="causes" class="form-control " id="causes" cols="10"
+                            rows="5">{{homeData.causes}}</textarea>
+                    </div>
+                </div>
+                <div class="col-md-8">
+
+                    <h4>Gallery Side</h4>
+                    <div class="form-group ">
+                        <label for="gallery_title">Gallery Caption </label>
+                        <input id="gallery_title" type="text" class="form-control " name="gallery_title" required
+                            placeholder="Enter Gallery Caption" value="{{homeData.gallery.caption}}">
+                    </div>
+                    <div class="form-group ">
+                        <label for="gallery_descp">Gallery Description </label>
+                        <textarea name="gallery_descp" id="gallery_descp" class="form-control " cols="10"
+                            rows="5">{{homeData.gallery.descp}}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <button class="btn btn-primary w-100 btn-skew btn-outline-dashed py-2 "><span>Update Home Page
+                </span></button>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</form>

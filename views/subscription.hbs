@@ -1,0 +1,216 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">All Subscriptions available for cban members</h4>
+            </div>
+            <div class="col-auto align-self-center">
+               <div class="row">
+                   <div class="col-md-6">
+                        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createSub">
+                    <span class="day-name" id="Day_Name">Create Subscription</span>&nbsp;
+                    <i data-feather="plus" class="align-self-center icon-xs ms-1"></i>
+                </a>
+                   </div>
+                    <div class="col-md-6">
+                        <a href="view-subscriptions" class="btn btn-sm btn-outline-primary" >
+                    <span class="day-name" id="Day_Name">Member Subscriptions</span>&nbsp;<br>
+                    <i data-feather="eye" class="align-self-center icon-xs ms-1"></i>
+                </a>
+                   </div>
+               </div>
+            </div>
+
+        </div>
+    </div>
+    <!--end card-header-->
+    <div class="card-body">
+        <div class="row">
+            {{#each subscriptions }}
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="pricingTable1 text-center">
+                            <h1 class="amount py-3 mt-2 mb-0 ">{{ name }} </h1>
+                            <hr class="hr-dashed my-4">
+                            <p>{{ descp }}</p>
+                            <div class="text-center">
+                                <h3 class="amount">N{{ amount }}<small class="font-12 text-muted">/{{ type }}</small>
+                                </h3>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a href="#" class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                        data-bs-target="#createSub{{ id }}">Edit <i data-feather="edit"
+                                            class="align-self-center icon-xs ms-1"></i></a>
+                                </div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <a href="delete/subscriptions/{{ id }}" class="btn btn-sm btn-danger">Delete <i data-feather="database"
+                                            class="align-self-center icon-xs ms-1"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end pricingTable-->
+                    </div>
+                    <!--end card-body-->
+                </div>
+                <!--end card-->
+            </div>
+
+
+
+            {{!-- modal start --}}
+
+            <div class="modal fade" id="createSub{{id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalDefaultLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title m-0" id="myLargeModalLabel">Update Subscription</h6>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <!--end modal-header-->
+                        <div class="modal-body">
+                            <form class="form-parsley" id="form" action="/subscriptions" method="post">
+                                <div class="form-group">
+                                    <label class="form-label text-dark">Name Of Subscription</label>
+                                    <div>
+                                        <input type="hidden" value="{{id}}" name="id">
+                                        <input type="text" id="nameTxt" name="name" value="{{ name }}"
+                                            class="form-control" required placeholder="Enter name of subscription" />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-dark">Select payment structure</label>
+                                            <div>
+                                                <input type="hidden" value="{{ type }}" id="dumType">
+                                                <select name="type" id="typeTxt" required class="form-control">
+                                                    <option value="">Select payment structure</option>
+                                                    <option value="yearly">Yearly</option>
+                                                    <option value="monthly">Monthly</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Amount</label>
+                                            <div>
+                                                <input data-parsley-type="number" id="tagTxt" name="amount"
+                                                    value="{{ amount }}" type="number" class="form-control" required
+                                                    placeholder="Enter amount needed to be piad" />
+                                            </div>
+                                        </div>
+                                        <!--end form-group-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label text-dark">Subscription Description</label>
+                                    <textarea required class="form-control" id="workTxt" name="descp"
+                                        placeholder="Describe the subscription" rows="5">{{ descp }}</textarea>
+                                </div>
+
+
+
+                        </div>
+                        <!--end modal-body-->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary btn-sm">Update Subscription</button>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                        </form>
+                        <!--end modal-footer-->
+                    </div>
+                    <!--end modal-content-->
+                </div>
+                <!--end modal-dialog-->
+            </div>
+            <!--end modal-->
+            {{/each }}
+            <!--end col-->
+
+        </div>
+    </div>
+    <!--end card-body-->
+</div>
+<!--end card-->
+
+
+
+<div class="modal fade" id="createSub" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title m-0" id="myLargeModalLabel">Create Subscription</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!--end modal-header-->
+            <div class="modal-body">
+                <form class="form-parsley" id="form" action="/subscriptions" method="post" >
+                    <div class="form-group">
+                        <label class="form-label text-dark">Name Of Subscription</label>
+                        <div>
+                            <input type="text" id="nameTxt" name="name" class="form-control" required
+                                placeholder="Enter name of subscription" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-dark">Select payment structure</label>
+                                <div>
+                                    <select name="type" id="typeTxt" required class="form-control">
+                                        <option value="">Select payment structure</option>
+                                        <option value="yearly">Yearly</option>
+                                        <option value="monthly">Monthly</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Amount</label>
+                                <div>
+                                    <input data-parsley-type="number" id="tagTxt" type="number" name="amount" class="form-control"
+                                        required placeholder="Enter amount needed to be paid" />
+                                </div>
+                            </div>
+                            <!--end form-group-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label text-dark">Subscription Description</label>
+                        <textarea required class="form-control" id="workTxt" name="descp"
+                            placeholder="Describe the subscription" rows="5"></textarea>
+                    </div>
+
+
+
+            </div>
+            <!--end modal-body-->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm">Save Subscription</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+            </form>
+            <!--end modal-footer-->
+        </div>
+        <!--end modal-content-->
+    </div>
+    <!--end modal-dialog-->
+</div>
+<!--end modal-->
+
+
+<script src="/js/jquery.min.js"></script>
+<script>
+    $("#typeTxt").val($("#dumType").val());
+</script>

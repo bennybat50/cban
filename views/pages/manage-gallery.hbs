@@ -1,0 +1,232 @@
+<link href="/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+
+<div class="card">
+    <!--end col-->
+    <!--end card-header-->
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5>Manage Site Gallery</h5>
+                </div>
+                <div class="col-auto align-self-center">
+                    <button class="btn btn-outline-dark btn-sm add-file" data-bs-toggle="modal"
+                        data-bs-target="#createItemModal"><i class="fas fa-plus me-2 "></i>Add
+                        Image</button>
+
+                </div>
+            </div>
+        </div><br>
+        <div class="row row-cols-1 row-cols-md-4 gx-3">
+            {{#each gallery }}
+            <div class="col">
+                <div class="card">
+                    <img src="{{ url }}" class="card-img-top bg-light-alt" alt="..."
+                        data-bs-toggle="modal" data-bs-target="#viewItemModal{{@index}}">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-title text-dark font-18">{{ name }}</h5>
+                            </div>
+                            <!--end col-->
+                            <div class="col-auto">
+                                <div class="dropdown d-inline-block">
+                                    <a class="dropdown-toggle arrow-none" id="dLabel11" data-bs-toggle="dropdown"
+                                        href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                        <i class="fas fa-eye font-20 text-muted"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel11">
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#viewItemModal{{@index}}">View</a>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#editItemModal{{@index}}">Edit</a>
+                                        <a class="dropdown-item" href="/admin/delete-inventory/{{id}}">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+
+                        <p class="card-text inventory-descp">{{ descp }}</p>
+                        <hr>
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <label class="badge bg-dark ">Caption:</label>
+                                <h4> {{ category }}</h4>
+                            </div>
+                            <div class="col">
+                                <label class="badge bg-dark ">Tag:</label>
+                                <h4>{{ quantity }}</h4>
+                            </div>
+                            <!--end col-->
+
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+                    </div>
+                    <!--end card-body-->
+                </div>
+                <!--end card-->
+            </div>
+            <!--end col-->
+
+            <div class="modal fade bd-example-modal-lg" id="viewItemModal{{@index}}" tabindex="-1" role="dialog"
+                aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title m-0" id="myLargeModalLabel">View {{ name }}</h6>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <!--end modal-header-->
+                        <div class="modal-body">
+                            <img src="/images/{{ img }}" class="d-block w-100 " alt="..."
+                                        style="height: 200px; object-fit:cover;">
+                             
+                            <hr>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6><span class="text-white bg-dark p-1 font-10 ">Caption:</span> {{ caption }}
+                                    </h6>
+                                </div>
+                                <div class="col">
+                                    <h6><span class="text-white bg-dark p-1 font-10 ">Tag:</span> {{ tag }}
+                                    </h6>
+                                </div>
+                                <!--end col-->
+
+                                <!--end col-->
+                            </div>
+
+
+                        </div>
+                        <!--end modal-body-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-soft-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                        <!--end modal-footer-->
+                    </div>
+                    <!--end modal-content-->
+                </div>
+                <!--end modal-dialog-->
+            </div>
+            <!--end modal-->
+
+            {{!-- --------------------------------------EDIT MODAL-------------------------------------------- --}}
+            <div class="modal fade bd-example-modal-lg" id="editItemModal{{@index}}" tabindex="-1" role="dialog"
+                aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <form class="form-parsley" id="form" action="manage-inventory" method="post"
+                    enctype="multipart/form-data">
+                    <div class="modal-dialog modal-md" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title m-0" id="myLargeModalLabel">Edit {{name}}</h6>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <!--end modal-header-->
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label text-dark">Image </label>
+                                    <input type="file" id="input-file-now2" name="img1" class="dropify"
+                                        data-height="100" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label text-dark">Caption</label>
+                                    <div>
+                                        <input type="text" id="captionTxt" name="caption" required class="form-control" value="{{caption}}"
+                                            placeholder="Enter caption" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label text-dark">Tag</label>
+                                    <div>
+                                        <input data-parsley-type="text" id="tagTxt" type="text" required
+                                            class="form-control" name="tag" placeholder="Tag Image" value="{{tag}}" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--end modal-body-->
+                            <div class="modal-footer">
+                                <input type="hidden" name="status" value="update">
+                                <input type="hidden" name="item_id" value="{{ id }}">
+                                <button type="submit" class="btn btn-dark btn-sm">Update Image</button>
+                                <button type="button" class="btn btn-soft-secondary btn-sm"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                            <!--end modal-footer-->
+                        </div>
+                        <!--end modal-content-->
+                    </div>
+                </form>
+                <!--end modal-dialog-->
+            </div>
+            <!--end modal-->
+            {{!-- --------------------------------------EDIT MODAL END-------------------------------------------- --}}
+            {{/each }}
+        </div>
+        <!--end row-->
+        <br>
+        <br>
+
+    </div>
+    <!--end card-body-->
+</div>
+<!--end card-->
+
+
+
+
+
+
+
+
+
+<div class="modal fade bd-example-modal-lg" id="createItemModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <form class="form-parsley" id="form" action="manage-gallery" method="post" enctype="multipart/form-data">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="myLargeModalLabel">Add Image</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!--end modal-header-->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label text-dark">Image </label>
+                        <input type="file" id="input-file-now2" name="img1" class="dropify" data-height="100" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label text-dark">Caption</label>
+                        <div>
+                            <input type="text" id="captionTxt" name="caption" required class="form-control"
+                                placeholder="Enter caption" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label text-dark">Tag</label>
+                        <div>
+                            <input data-parsley-type="text" id="tagTxt" type="text" required class="form-control"
+                                name="tag" placeholder="Tag Image" />
+                        </div>
+                    </div>
+
+                </div>
+                <!--end modal-body-->
+                <div class="modal-footer">
+                    <input type="hidden" name="status" value="insert">
+                    <button type="submit" class="btn btn-dark btn-sm">Save Image</button>
+                    <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div>
+                <!--end modal-footer-->
+            </div>
+            <!--end modal-content-->
+        </div>
+    </form>
+    <!--end modal-dialog-->
+</div>
+<!--end modal-->

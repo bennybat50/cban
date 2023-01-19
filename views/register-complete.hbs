@@ -1,0 +1,555 @@
+<link href="plugins/dropify/css/dropify.min.css" rel="stylesheet">
+
+<br>
+<br>
+<div class="container">
+    <div class="row d-flex justify-content-center vh-100">
+        <div class="col-12 align-self-center">
+            <div class="row">
+                <div class="col-lg-12 mx-auto">
+                    <div class="card card-top">
+
+                        <div class="card-body p-0">
+
+                            <!-- Tab panes -->
+                            <div class="tab-content pt-0">
+                                <div class="tab-pane active " id="Register_Tab" role="tabpanel">
+
+                                    <div class="row ">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <h4 class="mb-2 fw-bold  font-30 text-center">Account Information
+                                            </h4>
+                                            <p class="font-15  mb-0 text-center">Please provide a copy of your <b>BANK
+                                                    ID-CARD</b>, <b>NIN ID-CARD</b> and <b>PROFILE-PICTURE</b> of you so
+                                                we can
+                                                identify you.
+                                            </p>
+                                            <br>
+                                             <div class="form-group text-center">
+                                                    <label for="" class="text-danger font-20">{{error}}</label>
+                                                </div>
+                                                {{!-- enctype="multipart/form-data" --}}
+                                            <form 
+                                                id="form" 
+                                                class="form-parsley" 
+                                                method="post" 
+                                                action=""
+                                                enctype="multipart/form-data" 
+                                                >
+                                                <input type="hidden" name="role" value="member">
+                                                <div class="text-center">
+                                                    <h5 class="text-mute"><b>MEMBERSHIP TYPE</b>
+                                                    </h5>
+                                                    <p>--------------------------------------------</p>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Member Type</label>
+                                                            <div>
+                                                                   <input type="hidden" id="dumMember"
+                                                                    value="{{member.member_type}}">
+                                                                <select name="member_type" id="member_type" class="form-control" onchange="memberType()">
+                                                                    <option value="">Select Type</option>
+                                                                    <option value="new_member">New Member</option>
+                                                                    <option value="old_member">Old Member</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <!--end form-group-->
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div>
+                                                     <label class="form-label text-dark">Date of joining</label>
+                                                </div>
+                                                <div class="row" id="show_old">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                           
+                                                            <div>
+                                                                
+                                                                <input type="number" id="date_of_joining" name="date_of_joining"
+                                                                    value="{{member.date_of_joining}}" class="form-control"
+                                                                    placeholder="Day" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div>
+                                                                 <input type="hidden" id="dumMonth"
+                                                                    value="{{member.name_of_month_joining}}">
+                                                                    <select name="name_of_month_joining" id="month_joined" class="form-control">
+                                                                    <option value="">Month</option>
+                                                                    <option value="January">January</option>
+                                                                    <option value="February">February</option>
+                                                                    <option value="March">March</option>
+                                                                    <option value="April">April</option>
+                                                                    <option value="May">May</option>
+                                                                    <option value="June">June</option>
+                                                                    <option value="July">July</option>
+                                                                    <option value="August">August</option>
+                                                                    <option value="September">September</option>
+                                                                    <option value="October">October</option>
+                                                                    <option value="November">November</option>
+                                                                    <option value="December">December</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <input type="number" id="year_of_joining" name="year_of_joining"
+                                                                    value="{{member.year_of_joining}}" class="form-control"
+                                                                    placeholder="Year" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Work Status</label>
+                                                            <div>
+                                                                   <input type="hidden" id="dumAction"
+                                                                    value="{{member.member_action}}">
+                                                                <select name="member_action" id="member_action" class="form-control" onchange="disableBankId()">
+                                                                    <option value="">Select Type</option>
+                                                                    <option value="active">Active Banker</option>
+                                                                    <option value="retired">Retired Banker</option>
+                                                                    <option value="others">Others</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <!--end form-group-->
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-center">
+                                                    <h5 class="text-mute"><b>PERSONAL INFORMATION</b>
+                                                    </h5>
+                                                    <p>--------------------------------------------</p>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Title</label>
+                                                            <div>
+                                                                <input type="hidden" id="dumTitle"
+                                                                    value="{{member.title}}">
+                                                                <select name="title" id="titleTxt" class="form-control">
+                                                                    <option value="">Select Title</option>
+                                                                    <option value="Mr">Mr</option>
+                                                                    <option value="Mrs">Mrs</option>
+                                                                    <option value="Miss">Miss</option>
+                                                                    <option value="Chief">Chief</option>
+                                                                    <option value="Dr">Dr</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <!--end form-group-->
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Full Name</label>
+                                                            <div>
+                                                                <input type="text" id="fullnameTxt" name="full_name"
+                                                                    value="{{member.full_name}}" class="form-control"
+                                                                    placeholder="(Surname,Firstname, Othername)" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Guarantor ID</label>
+                                                            {{#if member.guarantor_id }}
+                                                            <div>
+                                                                <input type="text" name="guarantor_id"
+                                                                    value="{{member.guarantor_id}}" readonly
+                                                                    class="form-control" placeholder="" />
+                                                            </div>
+                                                            {{else }}
+                                                            <div>
+                                                                <input type="text" name="guarantor_id"
+                                                                    value="{{member.guarantor_id}}" class="form-control"
+                                                                    placeholder="Enter your guarantor id" required />
+                                                            </div>
+                                                            {{/if }}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Email Address</label>
+                                                            <div>
+                                                                <input type="text" id="fullnameTxt" readonly
+                                                                   name="email" value="{{member.email}}" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Phone Number</label>
+                                                            <div>
+                                                                <input data-parsley-type="number" id="phoneTxt"
+                                                                    value="{{member.phone}}" type="text"
+                                                                    class="form-control" name="phone"
+                                                                    placeholder="Enter phone numbers" />
+                                                            </div>
+                                                        </div>
+                                                        <!--end form-group-->
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Select Gender</label>
+                                                            <div>
+                                                                <input type="hidden" id="dumGender"
+                                                                    value="{{member.gender}}">
+                                                                <select name="gender" id="genderTxt"
+                                                                    class="form-control">
+                                                                    <option value="">Select Gender</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Marital Status</label>
+                                                            <div>
+                                                                <input type="hidden" id="dumMarital"
+                                                                    value="{{member.marital_status}}">
+                                                                <select name="marital_status" id="martialTxt"
+                                                                    class="form-control">
+                                                                    <option value="">Select Status</option>
+                                                                    <option value="Single">Single</option>
+                                                                    <option value="Married">Married</option>
+                                                                    <option value="Divorced">Divorced</option>
+                                                                    <option value="Widowed">Widowed</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <!--end form-group-->
+                                                    </div>
+                                                    {{!-- <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Date of Birth</label>
+                                                            <div>
+                                                                <input type="date" id="dobTxt" name="date_of_birth"
+                                                                    class="form-control"
+                                                                    value="member.date_of_birth2" />
+                                                            </div>
+                                                        </div>
+                                                    </div> --}}
+                                                     <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Date of Birth</label>
+                                                            <div>
+                                                                <div class="row select-date ">
+                                                                    <input type="text" hidden id="dumMonthBirth"
+                                                                        value="{{member.month_of_birth}}" required> 
+
+                                                                    <div class="col-4">
+                                                                        <input type="number" id="day_of_birth"
+                                                                            name="day_of_birth" required
+                                                                            value="{{member.day_of_birth}}"
+                                                                            class="form-control"
+                                                                            placeholder="Day" />
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <select name="month_of_birth"
+                                                                            id="month_of_birth" class="form-control" required>
+                                                                            <option value="">Month</option>
+                                                                            <option value="0">January</option>
+                                                                            <option value="1">February</option>
+                                                                            <option value="2">March</option>
+                                                                            <option value="3">April</option>
+                                                                            <option value="4">May</option>
+                                                                            <option value="5">June</option>
+                                                                            <option value="6">July</option>
+                                                                            <option value="7">August</option>
+                                                                            <option value="8">September</option>
+                                                                            <option value="9">October</option>
+                                                                            <option value="10">November</option>
+                                                                            <option value="11">December</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <input type="number" id="year_of_birth"
+                                                                            name="year_of_birth" required
+                                                                            value="{{member.year_of_birth}}"
+                                                                            class="form-control"
+                                                                            placeholder="Year" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-center">
+                                                    <h5 class="text-mute"><b>OTHER INFORMATION ABOUT YOU</b>
+                                                    </h5>
+                                                    <p>--------------------------------------------</p>
+                                                </div>
+                                                <hr>
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Name of Bank</label>
+                                                            <div>
+                                                                <input type="text" id="bankTxt" name="name_of_bank" list="banks_list"
+                                                                    class="form-control" value="{{member.name_of_bank}}"
+                                                                    placeholder="Enter your the name of your bank" />
+
+                                                                <datalist id="banks_list">
+                                                                    {{#each banks}}
+                                                                    <option value="{{name}}" style="text-transform:uppercase;color:#656d9a">{{name}}</option>
+                                                                        {{#each values}}
+                                                                            <option style="font-size:11px">{{this}}</option>
+                                                                        {{/each}}
+                                                                    {{/each}}
+                                                                </datalist>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Current Parish in place
+                                                                of
+                                                                residence</label>
+                                                            <div>
+                                                                <input type="text" id="parishTxt" name="parish"
+                                                                    class="form-control" value="{{member.parish}}"
+                                                                    placeholder="Enter your current parish in place of residence" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Diocese</label>
+                                                            <div>
+                                                                <input list="diocese_list" type="text" id="dioceseTxt"
+                                                                    name="diocese" class="form-control"
+                                                                    value="{{member.diocese}}" placeholder="Diocese" />
+                                                                <datalist id="diocese_list">
+                                                                    {{#each diocese}}
+                                                                    <option> {{this}}</option>
+                                                                    {{/each}}
+                                                                </datalist>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Branch(Work
+                                                                Address)</label>
+                                                            <textarea class="form-control" id="workTxt"
+                                                                name="branch_of_bank"
+                                                                placeholder="Enter Branch(Work Address)"
+                                                                rows="3">{{member.branch_of_bank}}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label text-dark">Home Address</label>
+                                                            <textarea class="form-control" name="home_addr"
+                                                                placeholder="Enter Home Address" id="homeTxt"
+                                                                rows="3">{{member.home_addr}}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-center">
+                                                    <h5 class="text-mute"><b>PROOF OF IDENTITY </b></h5>
+                                                    <p>--------------------------------------------</p>
+                                                </div>
+                                                <hr>
+
+                                                <div >
+                                                    <label class="form-label">Member Type</label>
+                                                  <div class="row">
+                                                    
+                                                    <div class="col-md-6">
+                                                       
+                                                        <div>   
+                                                            <input type="hidden" id="dumIdentification"
+                                                            value="{{member.identification_type}}">
+                                                            <select name="identification_type" id="identification_type" class="form-control">
+                                                                <option value="">Select Type</option>
+                                                                <option value="bank_identification">Bank Identification</option>
+                                                                <option value="nin_identification">NIN Verification</option>
+                                                                <option value="driver_license">Driver License</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="number" id="identification_no"
+                                                            name="identification_no" required
+                                                            value="{{member.identification_no}}"
+                                                            class="form-control"
+                                                            placeholder="Identification Number" />
+                                                      </div>
+                                                    
+                                                  </div>
+                                                
+
+                                                 
+                                               
+                                                </div>
+
+
+
+                                                <div class="form-group text-center">
+                                                    <label for="" class="text-danger font-20"> {{error}}</label>
+                                                </div>
+
+                                                <!--end form-group-->
+                                                <div class="text-center mb-2">
+                                                    <button type="submit" class="btn btn-primary btn-lg ">
+                                                        Save and update Account </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end card-body-->
+
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->
+</div>
+<!--end container-->
+<!-- End Log In page -->
+
+<script src="/js/jquery.min.js"></script>
+<script>
+    //$("#fullNameTxt").val(lData.name);
+    // $("#phoneTxt").val(lData.phone);
+    $("#titleTxt").val($("#dumTitle").val());
+    $("#genderTxt").val($("#dumGender").val());
+    $("#martialTxt").val($("#dumMarital").val());
+    $("#member_type").val($("#dumMember").val());
+    $("#month_joined").val($("#dumMonth").val());
+    $("#member_action").val($("#dumAction").val());
+    $("#month_of_birth").val($("#dumMonthBirth").val());
+    $('#identification_type').val($('#dumIdentification').val())
+
+
+    if($("#dumMember").val() == "new_member"){
+        $('#show_old').hide()
+    }
+     if($("#dumAction").val() == "retired"){
+        $('#bank_id').hide()
+        $('#member_avatar').removeClass("col-md-4").addClass('col-md-6')
+        $('#nin_id').removeClass("col-md-4").addClass('col-md-6')
+    }
+
+    function memberType(){
+       let v =  $('#member_type').val()
+     if(v == "new_member"){
+           $('#show_old').hide()
+       }
+       if(v == "old_member"){
+           $('#show_old').show()
+       }
+    }
+
+    function disableBankId(){
+           let v =  $('#member_action').val()
+           if(v == "retired"){
+               $('#bank_id').hide()
+               $('#member_avatar').removeClass("col-md-4").addClass('col-md-6')
+               $('#nin_id').removeClass("col-md-4").addClass('col-md-6')
+           }
+           if( v == "active" || v == "others"){
+                $('#bank_id').show()
+                $('#member_avatar').removeClass("col-md-6").addClass('col-md-4')
+               $('#nin_id').removeClass("col-md-6").addClass('col-md-4')
+           }
+    }
+            //$("#dobTxt").val(lData.dob);
+            //$("#emailTxt").val(lData.email);
+            //$("#passwordTxt").val(lData.password);
+           // $("#name_of_bankTxt").val(lData.bank);
+           // $("#parishTxt").val(lData.parish);
+           // $("#dioceseTxt").val(lData.diocese);
+           // $("#branch_of_bankTxt").val(lData.work);
+           // $("#home_addrTxt").val(lData.home);
+
+var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+        today = new Date(),
+        // default targetDate is christmas
+        targetDate = new Date(today.getFullYear(), 11, 25);
+
+    setDate(targetDate);
+    setYears(105) // set the next five years in dropdown
+
+    $("#select-month").change(function () {
+        var monthIndex = $("#select-month").val();
+        setDays(monthIndex);
+    });
+
+    function setDate(date) {
+        setDays(date.getMonth());
+        $("#select-day").val(date.getDate());
+        $("#select-month").val(date.getMonth());
+        $("#select-year").val(date.getFullYear());
+    }
+
+    // make sure the number of days correspond with the selected month
+    function setDays(monthIndex) {
+        var optionCount = $('#select-day option').length,
+            daysCount = daysInMonth[monthIndex];
+
+        if (optionCount < daysCount) {
+            for (var i = optionCount; i < daysCount; i++) {
+                $('#select-day')
+                    .append($("<option></option>")
+                        .attr("value", i + 1)
+                        .text(i + 1));
+            }
+        }
+        else {
+            for (var i = daysCount; i < optionCount; i++) {
+                var optionItem = '#select-day option[value=' + (i + 1) + ']';
+                $(optionItem).remove();
+            }
+        }
+    }
+
+    function setYears(val) {
+        var year = today.getFullYear();
+        for (var i = 0; i < val; i++) {
+            $('#select-year')
+                .append($("<option></option>")
+                    .attr("value", year - i)
+                    .text(year - i));
+        }
+    }
+
+</script>

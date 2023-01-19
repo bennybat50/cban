@@ -1,0 +1,33 @@
+{
+    "kitchen_id": "34iurou349irpoweoporfwejkdfjpi34o34",
+    "delivery_districts": [{
+            "name": "Apo District",
+            "price": 250,
+            "id": "5ea1a2d2da707b77d55e68cb"
+        }, {
+            "name": "Asokoro",
+            "price": 500,
+            "id": "5ea1a2d2da707b77d55e68cc"
+        },
+        {
+            "name": "Bwari",
+            "price": 1700,
+            "id": "5ea1a2d2da707b77d55e68cd"
+        },
+        {
+            "name": "Central Business District",
+            "price": 500,
+            "id": "5ea1a2d2da707b77d55e68ce"
+        },
+        {
+            "name": "Dakibiyu",
+            "price": 750,
+            "id": "5ea1a2d2da707b77d55e68cf"
+        },
+        {
+            "name": "Dakwo District",
+            "price": 950,
+            "id": "5ea1a2d2da707b77d55e68d0"
+        }
+    ]
+}

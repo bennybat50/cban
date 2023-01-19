@@ -1,0 +1,235 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+              <div class="col-md-12">
+                 <div class="form-group ">
+                        <label for="visit">Visit Text</label>
+                        <input id="visit" type="text" class="form-control " name="vision" required
+                            placeholder="Enter Visit Text">
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+          
+            <div class="col-md-6">
+                 <div class="row">
+                        <div class="col">
+                            <h4>Emails Section</h4>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#" class="btn btn-primary"  data-bs-toggle="modal"
+                                    data-bs-target="#addEmailModal">Add Emails</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <table class="table table-striped table-bordered dt-responsive nowrap "
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th class="text-white">Email</th>
+                                    <th class="text-white">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="email_tbody">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+            <div class="col-md-6">
+                 <div class="row">
+                        <div class="col">
+                            <h4>Phones Section</h4>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#addPhoneModal">Add Phone Number</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <table class="table table-striped table-bordered dt-responsive nowrap "
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th class="text-white">Phone</th>
+                                    <th class="text-white">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="phone_tbody">
+                               
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button class="btn btn-primary w-100 btn-skew btn-outline-dashed py-2 " id="updateBtn"><span>Update Contact Page
+                    </span></button>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addPhoneModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title m-0" id="myLargeModalLabel">Add Phone</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!--end modal-header-->
+            <div class="modal-body">
+                <form class="form-parsley" id="form" >
+                    
+                    <div class="form-group">
+                        <label class="form-label text-dark">Phone </label>
+                        <input type="number" id="phone_input" name="phone_input" class="form-control"
+                                        required placeholder="Enter phone number" />
+                    </div>
+
+            </div>
+            <!--end modal-body-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" id="addPhoneBtn">Add Number</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+            
+            <!--end modal-footer-->
+        </div>
+        <!--end modal-content-->
+    </div>
+    <!--end modal-dialog-->
+</div>
+
+
+<div class="modal fade" id="addEmailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title m-0" id="myLargeModalLabel">Add Email</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!--end modal-header-->
+            <div class="modal-body">
+                <form class="form-parsley" id="form" >
+                    
+                    <div class="form-group">
+                        <label class="form-label text-dark">Email </label>
+                        <input type="email" id="email_input" name="email_input" class="form-control"
+                                        required placeholder="Enter Email Address" />
+                    </div>
+
+            </div>
+            <!--end modal-body-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" id="addEmailBtn">Add Email Address</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+            
+            <!--end modal-footer-->
+        </div>
+        <!--end modal-content-->
+    </div>
+    <!--end modal-dialog-->
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script>
+    let emails = []
+    let phones = []
+
+    getContactData()
+
+    function getContactData() {
+        $.ajax({
+            type: "get",
+            url: "https://catholicbankers.com/api/pages/contact",
+            success: function (res) {
+                $("#visit").val(res.visit)
+                emails = res.mail
+                phones = res.phone
+
+                loadDatas()
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+     $("#updateBtn").on('click', function () {
+         
+        let sendData = {
+        "visit": $("#visit").val(),
+        "mail": emails,
+         "phone": phones,
+        }
+
+        $.ajax({
+            type: "put",
+            url: "https://catholicbankers.com/api/pages/contact",
+            data: sendData,
+            success: function (res) {
+                getContactData()
+                
+                alert("Contact page updated successfully")
+            },
+            error: function (err) {
+                alert("Error updating contact page, please try again")
+            }
+        })
+    })
+
+    function loadDatas() {
+        let row1 = ""
+        let row2 = ""
+        phones.forEach((obj, i) => {
+            row1 += `
+            <tr>
+             <td>${obj}</td>
+             <td> <a href="#" class="remove1 text-danger" id="${i}">Remove</a></td>
+            </tr>`
+        })
+        $(".phone_tbody").html(row1)
+
+        emails.forEach((obj, i) => {
+            row2 += `
+            <tr>
+             <td>${obj}</td>
+             <td> <a href="#" class="remove2 text-danger" id="${i}">Remove</a></td>
+            </tr>`
+        })
+        $(".email_tbody").html(row2)
+    }
+
+     $(".phone_tbody").on( 'click', '.remove1', function(){
+        phones.splice($(this).attr('id'), 1 )
+        loadDatas()
+    })
+
+    $("#addPhoneBtn").on('click', function(){
+        phones.push($("#phone_input").val())
+         $('#addPhoneModal').modal('toggle');
+        loadDatas()
+    })
+
+    $("#addEmailBtn").on('click', function(){
+        emails.push($("#email_input").val())
+         $('#addEmailModal').modal('toggle');
+        loadDatas()
+    })
+    
+
+
+
+     $(".email_tbody").on( 'click', '.remove2', function(){
+        emails.splice($(this).attr('id'), 1 )
+        loadDatas()
+    })
+</script>

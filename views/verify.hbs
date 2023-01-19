@@ -1,0 +1,323 @@
+<style>
+    form {
+        padding: 2rem;
+        border-radius: 4px;
+        background: #fff;
+    }
+
+    form .form-control {
+        display: block;
+        height: 50px;
+
+        text-align: center;
+        font-size: 1.25rem;
+        min-width: 0;
+        padding: 0;
+
+    }
+
+    input[type="tel"] {
+        height: 70px !important;
+        margin-right: 0.5rem;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    form .form-control:last-child {
+        margin-right: 0;
+    }
+</style>
+<!-- Log In page -->
+<div class="container">
+    <input type="hidden" id="route" value="{{route}}" />
+    <input type="hidden" id="email" value="{{email}}" />
+    <div class="row vh-100 d-flex justify-content-center">
+        <div class="col-12 align-self-center">
+            <div class="row">
+                <div class="col-lg-4 mx-auto">
+                    
+                         <div class="card" id="card-reset" style="display: none">
+                        <div style="padding: 0 20px;">
+                            <div class="text-center p-3">
+                                <h4 class="mt-3 mb-1 fw-bold  font-30">Reset Password</h4>
+
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <input class="form-control" type="password" style="
+                                    height: 35px;
+                                    font-size: 15px;
+                                    text-align: left;
+                                    padding: 10px;" placeholder="password" id="passwd">
+                            </div>
+                            <div>
+                                <input class="form-control" type="password" style="
+                                height: 35px;
+                                font-size: 15px;
+                                text-align: left;
+                                padding: 10px;
+                                margin-bottom: 17px;" placeholder="confirm password" id="confirm_passwd">
+                            </div>
+                            <div id="reset-error" class="text-danger" style="
+                                    color: red;
+                                    text-align: center;
+                                    font-weight: 500;
+                                    font-size: 14px;
+                                "></div>
+                            <div>
+                                <button id="reset" type="button" class="w-100 btn btn-primary"
+                                    style="    height: 45px;">Reset
+                                    account</button>
+
+                            </div>
+                        </div>
+                        <div class="card-body bg-light-alt text-center">
+                            <span class="text-muted d-none d-sm-inline-block">CBAN ©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card" id="card-verify">
+                        <div class="card-body p-0 ">
+                            <div class="text-center p-3">
+                                <h4 class="mt-3 mb-1 fw-bold  font-30">Verify Code!</h4>
+
+                            </div>
+                        </div>
+                        <form action="" method="POST">
+                            <div class="card-body p-0">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active p-3" id="LogIn_Tab" role="tabpanel">
+                                        <h4 class="text-center mb-4">Enter your code</h4>
+                                        <div class="d-flex mb-3">
+                                            <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+                                            <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+                                            <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+                                            <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+                                            <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+                                            <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+                                        </div>
+                                        <button id="verify" type="button" class="w-100 btn btn-primary"
+                                            style="    height: 45px;">Verify
+                                            account</button>
+
+                                    </div>
+                                    <div 
+                                        id="resend"
+                                        style="text-align: center;color: #1761FD;cursor: pointer;">
+                                        Resend Code
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end card-body-->
+                        <div class="text-danger" id="msg" style="text-align: center;font-size: 18px;">
+
+                        </div>
+                        <div class="card-body bg-light-alt text-center">
+                            <span class="text-muted d-none d-sm-inline-block">CBAN ©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>
+                            </span>
+                        </div>
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->
+</div>
+<!--end container-->
+<!-- End Log In page -->
+<script>
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const form = document.querySelector('form')
+        const inputs = form.querySelectorAll('input[type="tel"]')
+        const KEYBOARDS = {
+            backspace: 8,
+            arrowLeft: 37,
+            arrowRight: 39,
+        }
+
+        function handleInput(e) {
+            const input = e.target
+            const nextInput = input.nextElementSibling
+            if (nextInput && input.value) {
+                nextInput.focus()
+                if (nextInput.value) {
+                    nextInput.select()
+                }
+            }
+        }
+
+        function handlePaste(e) {
+            e.preventDefault()
+            const paste = e.clipboardData.getData('text')
+            inputs.forEach((input, i) => {
+                input.value = paste[i] || ''
+            })
+        }
+
+        function handleBackspace(e) {
+            const input = e.target
+            if (input.value) {
+                input.value = ''
+                return
+            }
+
+            input.previousElementSibling.focus()
+        }
+
+        function handleArrowLeft(e) {
+            const previousInput = e.target.previousElementSibling
+            if (!previousInput) return
+            previousInput.focus()
+        }
+
+        function handleArrowRight(e) {
+            const nextInput = e.target.nextElementSibling
+            if (!nextInput) return
+            nextInput.focus()
+        }
+
+        form.addEventListener('input', handleInput)
+        inputs[0].addEventListener('paste', handlePaste)
+
+        inputs.forEach(input => {
+            input.addEventListener('focus', e => {
+                setTimeout(() => {
+                    e.target.select()
+                }, 0)
+            })
+
+            input.addEventListener('keydown', e => {
+                switch (e.keyCode) {
+                    case KEYBOARDS.backspace:
+                        handleBackspace(e)
+                        break
+                    case KEYBOARDS.arrowLeft:
+                        handleArrowLeft(e)
+                        break
+                    case KEYBOARDS.arrowRight:
+                        handleArrowRight(e)
+                        break
+                    default:
+                }
+            })
+        })
+
+        document.getElementById('resend').onclick = function(){
+            let email = document.getElementById('email').value;
+            let passwd = document.getElementById('passwd').value;   
+            let route = document.getElementById('route').value;              
+            let url = route + "/accounts/forget-passwd";
+            let options = {
+                method: "POST",
+                body: JSON.stringify({ email }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }
+
+            fetch(url, options)
+            .then(res => res.json())
+            .then(res => {
+                document.getElementById('msg').innerHTML = res.msg;
+                
+                setTimeout(() => {
+                    document.getElementById('msg').innerHTML = "";
+                }, 3000)
+            });
+        }
+
+        document.getElementById("reset").onclick = function(){
+            let passwd = document.getElementById("passwd")
+            let confirm_passwd = document.getElementById("confirm_passwd")
+
+            if(passwd.value == "" || confirm_passwd.value == ""){
+                document.getElementById("reset-error").innerHTML = "Password or Confirm password cannot be empty"
+            }
+            else if(passwd.value != confirm_passwd.value){
+                document.getElementById("reset-error").innerHTML = "Password and Confirm password does not match"
+            }else{
+                 let email = document.getElementById('email').value;
+                 let passwd = document.getElementById('passwd').value;   
+                 let route = document.getElementById('route').value;              
+                 let url = route + "/accounts/reset-passwd";
+                 let options = {
+                    method: "POST",
+                    body: JSON.stringify({ passwd, email }),
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                }
+
+                fetch(url, options)
+                .then(res => res.json())
+                .then(res => {
+                    document.getElementById('reset-error').innerHTML = res.msg;
+                    if(res.code == 200){
+                        passwd.value = "";
+                        confirm_passwd.value = "";
+                        document.getElementById('reset-error').innerHTML = "Successfull redirecting to login in 2 seconds";
+                    }
+                    
+                    setTimeout(() => {
+                        location.href ="/login"
+                    }, 3000)
+                });
+            }
+
+            setTimeout(()=>{
+                document.getElementById("reset-error").innerHTML = ""
+            },5000)
+        }
+
+        document.getElementById('verify').onclick = function () {
+            let code = ""
+            let route = document.getElementById('route').value;
+            let email = document.getElementById('email').value;
+
+            let url = route + "/accounts/reset-code";
+            inputs.forEach(e => { code += e.value;   })
+
+            let options = {
+                method: "POST",
+                body: JSON.stringify({ code, email }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }          
+
+            fetch(url, options)
+            .then(res => res.json())
+            .then(res => {
+                document.getElementById('msg').innerHTML = res.msg;
+                if (res.code == 200) {
+                    document.getElementById('card-reset').style.display = "block"
+                    document.getElementById('card-verify').style.display = "none"
+                }
+                setTimeout(() => {
+                    document.getElementById('msg').innerHTML = "";
+                }, 3000)
+            });
+
+
+        }
+
+    });
+
+
+
+
+</script>

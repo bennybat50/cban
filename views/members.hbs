@@ -1,0 +1,181 @@
+<link href="plugins/dropify/css/dropify.min.css" rel="stylesheet">
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">All Verified CBAN Members</h4>
+            </div>
+            {{!-- <div class="col-auto"> <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                    data-bs-target="#createProjectModal">
+                    <span class="day-name" id="Day_Name">Create Project</span>&nbsp;
+                    <i data-feather="plus" class="align-self-center icon-xs ms-1"></i>
+                </a></div> --}}
+        </div>
+    </div>
+    <!--end card-header-->
+    <div class="card-body">
+
+        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap "
+            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th class="text-white">S/N</th>
+                    <th class="text-white">Title</th>
+                    <th class="text-white">Full Name</th>
+                    <th class="text-white">Email Address</th>
+                    <th class="text-white">Phone</th>
+                    <th class="text-white">Bank</th>
+                    <th class="text-white">Branch</th>
+                    <th class="text-white">Parish</th>
+                    <th class="text-white">Diocese</th>
+                    <th class="text-white">Gender</th>
+                    <th class="text-white">Guarantor</th>
+                    <th class="text-white">Married</th>
+                    <th class="text-white">Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each members }}
+                 {{#if is_activated_by_admin}}
+                <tr>
+                    <td>{{@index}}</td>
+                    <td>{{title}}</td>
+                    <td>{{full_name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{phone}}</td>
+                    <td>{{name_of_bank}}</td>
+                    <td>{{branch_of_bank}}</td>
+                    <td>{{parish}}</td>
+                    <td>{{diocese}}</td>
+                    <td>{{gender}}</td>
+                    <td>{{guarantor_name}}</td>
+                    <td>{{marital_status}}</td>
+                    <td> <a href="#"><i data-feather="eye" data-bs-toggle="modal" data-bs-target="#viewMemeberModal{{@index}}" class="text-primary font-10"></i></a>
+                        
+                    </td>
+                </tr>
+                 <div class="modal fade" id="viewMemeberModal{{@index}}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalDefaultLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title m-0" id="myLargeModalLabel">Member Information</h6>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <!--end modal-header-->
+                            <div class="modal-body">
+                                <div class="container">
+                                    <h4>Personal Information</h4>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            {{#if avatar  }}
+                                             <img src="{{ avatar }}" class="user-profile-image img-circle"
+                    alt="" style=" width:120px; height:120px ;object-fit:cover; border-radius:300px; border:2px solid #1A7BB7; margin:auto; ">
+                                            {{else }}
+                                             <img src="/images/users/default-user.png" class="user-profile-image img-circle"
+                    alt="" style=" width:120px; height:120px ;object-fit:cover; border-radius:300px; border:2px solid #1A7BB7; margin:auto; ">
+                                            {{/if }}
+                                            
+                                        </div>
+                                         <div class="col-md-4">
+                                            <p><b>Name</b></p>
+                                            <h5>{{title}}. {{full_name}}</h5>
+                                            <br>
+                                             <p><b>Email Address</b></p>
+                                            <h5>{{email}}</h5>
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                            <p><b>Phone</b></p>
+                                            <h5>{{phone}}</h5>
+                                            <br>
+                                             <p><b>Married</b></p>
+                                            <h5>{{marital_status}}</h5>
+                                        </div>
+                                        
+                                    </div>
+                                    <hr>
+                                    <h4>Other Information</h4>
+                                    <hr>
+                                    <div class="row">
+                                         <div class="col-md-4">
+                                            
+                                            <p><b>Bank</b></p>
+                                            <h5>{{name_of_bank}}</h5>
+                                            <br>
+                                             <p><b>Branch</b></p>
+                                            <h5>{{branch_of_bank}}</h5>
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                            <p><b>Parish</b></p>
+                                            <h5>{{parish}}</h5>
+                                            <br>
+                                             <p><b>Diocese</b></p>
+                                            <h5>{{diocese}}</h5>
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                            <p><b>Gender</b></p>
+                                            <h5>{{gender}}</h5>
+                                            <br>
+                                             <p><b>Guarantor</b></p>
+                                            <h5>{{guarantor_name}}</h5>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                     <div class="row">
+                                         <div class="col-md-4">
+                                            
+                                            <p><b>Date Of birth</b></p>
+                                            <h5>{{day_of_birth}}</h5>
+                                            <br>
+                                             <p><b>Member ID</b></p>
+                                            <h5>{{member_id}}</h5>
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                            <p><b>Projects Involved</b></p>
+                                            <h5>{{total_project_involved}}</h5>
+                                            <br>
+                                             <p><b>Amount Donated</b></p>
+                                            <h5>{{total_amt_donated}}</h5>
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                            <p><b>ID Card</b></p>
+                                            <a href="{{bank_identification}}"  target="blank"><img src="{{bank_identification}}" style="width: 100%; height:100px; object-fit:cover;" alt=""></a>
+                                            <br>
+                                             <p><b>NIN Card</b></p>
+                                            <a href="{{nin_identification}}" target="blank"><img src="{{nin_identification}}" style="width: 100%; height:100px; object-fit:cover;" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end modal-body-->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                                <!--end modal-footer-->
+                            </div>
+                            <!--end modal-content-->
+                        </div>
+                        <!--end modal-dialog-->
+                    </div>
+                </div>
+                 {{/if }}
+
+
+
+               
+                    {{/each }}
+            </tbody>
+
+        </table>
+    </div>
+    <!--end card-body-->
+</div>
+<!--end card-->

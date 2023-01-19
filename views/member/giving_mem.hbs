@@ -1,0 +1,92 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">Recent and past Givings</h4>
+            </div>
+            <div class="col-auto align-self-center">
+                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createNewsLarge">
+                    <span class="day-name" id="Day_Name">Give here </span>&nbsp;
+                    <i data-feather="credit-card" class="align-self-center icon-xs ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--end card-header-->
+    <div class="card-body">
+
+        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap "
+            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th class="text-white">S/N</th>
+                    <th class="text-white">Title</th>
+                    <th class="text-white">Amount</th>
+                    <th class="text-white">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each donations }}
+                <tr>
+                    <td>{{@index}}</td>
+                    <td><img src="{{resource}}" class="user-profile-image img-circle" alt=""
+                            style=" width:40px; height:40px ;object-fit:cover; border-radius:300px; margin:auto; "></td>
+                    <td>{{caption}}</td>
+                    <td>₦{{total_involved}}</td>
+                    <td>₦{{total_raised}}</td>
+
+                </tr>
+
+
+                {{/each }}
+            </tbody>
+        </table>
+    </div>
+    <!--end card-body-->
+</div>
+<!--end card-->
+
+<div class="modal fade" id="createNewsLarge" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title m-0" id="myLargeModalLabel">Give here</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!--end modal-header-->
+            <div class="modal-body">
+                <form class="form-parsley" id="form" action="/subscription" method="post">
+                    <div class="form-group">
+                        <label class="form-label text-dark">State reason for giving</label>
+                        <div>
+                            <input type="text" id="title" name="title" class="form-control" required
+                                placeholder="Reason for giving" />
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="form-label text-dark">Amount you want to give</label>
+                        <div>
+                             <input type="number" id="titleTxt" name="amount" class="form-control" required
+                        placeholder="Enter Amount" />
+                        </div>
+                    </div>
+
+
+                   
+
+
+            </div>
+            <!--end modal-body-->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm">Give here</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+            </form>
+            <!--end modal-footer-->
+        </div>
+        <!--end modal-content-->
+    </div>
+    <!--end modal-dialog-->
+</div>
+<!--end modal-->

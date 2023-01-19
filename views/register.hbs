@@ -1,0 +1,230 @@
+<div class="container">
+  <div class="row d-flex justify-content-center vh-100">
+    <div class="col-10 align-self-center">
+      <div class="row">
+        <div class="col-lg-6 mx-auto">
+          <div class="card">
+
+            <div class="card-body p-0">
+              <br />
+              <!-- Tab panes -->
+              <div class="tab-content pt-0">
+                <div class="tab-pane active" id="Register_Tab" role="tabpanel">
+
+                  <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                      <h4 class="mb-2 fw-bold font-30 text-center">CBAN Membership registration</h4>
+                      <p class="font-15 mb-0 text-center">Let's get started with your personal information
+                      </p>
+                      <br />
+		<div class="error text-center">
+                          <h5 class="text-danger">{{error}}</h5>
+                        </div>
+                        <br />
+
+
+                      <form class="form-parsley reg-form" id="form" action="register" method="post">
+                        <div class="form-group">
+                          <label class="form-label text-dark">Guarantor ID</label>
+                          <div>
+                            <input
+                              type="text"
+                              id="memberIDTxt"
+                              name="guarantor_id"
+                              class="form-control"
+                              required
+                              placeholder="Enter Guarantor's ID"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label text-dark">First Name</label>
+                          <div>
+                            <input
+                              type="text"
+                              id="firstnameTxt"
+                              name="first_name"
+                              class="form-control"
+                              required
+                              placeholder="Enter first name"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label text-dark">Last Name</label>
+                          <div>
+                            <input
+                              type="text"
+                              id="lastnameTxt"
+                              name="last_name"
+                              class="form-control"
+                              required
+                              placeholder="Enter last name"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                           <input
+                              type="hidden"
+                              id="full_name"
+                              name="full_name"
+                              class="form-control"
+                            />
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label text-dark">E-mail Address</label>
+                          <div>
+                            <input
+                              type="email"
+                              id="emailTxt"
+                              name="email"
+                              class="form-control"
+                              required
+                              parsley-type="email"
+                              placeholder="Enter a valid e-mail address"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">Phone</label>
+                          <input
+                            type="text"
+                            id="phoneTst"
+                            name="phone"
+                            class="form-control"
+                            required
+                            placeholder="Enter phone number"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">Password</label>
+                          <input
+                            type="password"
+                            id="passwordTxt"
+                            name="passwd"
+                            class="form-control"
+                            required
+                            data-parsley-minlength="6"
+                            placeholder="Enter password"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="password-confirm">Confirm New Password</label>
+                          <input
+                            id="password-confirm"
+                            type="password"
+                            data-parsley-equalto="#passwordTxt"
+                            class="form-control"
+                            required
+                            autocomplete="new-password"
+                            placeholder="Confirm password"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            required
+                            id="customCheck1"
+                            data-parsley-multiple="groups"
+                            data-parsley-mincheck="1"
+                          />
+                          <label class="custom-control-label form-reg-policy" for="customCheck1">By checking this box,
+                            you do hereby solemnly declare as follows:,
+                            <br />
+                            <b>i.</b>
+                            That all the information provided above by me are correct.
+                            <br />
+                            <b>ii.</b>
+                            That indemnify CBAN, its trustees and members of any liability that may arise from any miss
+                            information provided by me or any members representation during the course of my membership.
+                            <br />
+                            <b>iii.</b>
+                            That I have freely and voluntarily chosen to join CBAN and I undertake to abide by its
+                            rules, regulations and constitutions.
+                          </label>
+                        </div>
+
+                        
+                        <!--end form-group-->
+                        <!--end form-group-->
+                        <div class="text-center mb-2 reg-btn">
+                          <button type="submit" id="btnNext" class="btn btn-primary btn-lg">
+                            Register
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!--end card-body-->
+            <div class="card-body bg-light-alt text-center">
+              <div class="m-1 text-center text-muted">
+                <p class="mb-0">Already have CBAN Account ?
+                  <a href="login" class="text-primary ms-2"><b>Login</b></a></p>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <!--end col-->
+      </div>
+      <!--end row-->
+    </div>
+    <!--end col-->
+  </div>
+  <!--end row-->
+</div>
+<!--end container-->
+<!-- End Log In page -->
+
+<script src="/js/jquery.min.js"></script>
+<script>
+   let arr = []
+
+    $('#firstnameTxt').keyup(function(){
+     arr[0] = $('#firstnameTxt').val()
+      $('#full_name').val(arr.join(' '))
+    })
+    
+    
+    $('#lastnameTxt').keyup(function(){
+      arr[1] = $('#lastnameTxt').val()
+      $('#full_name').val(arr.join(' '))
+    })
+</script>
+{{! <script>
+
+        let lData = {};
+        if (localStorage.getItem("reg_data") != null) {
+            lData = JSON.parse(localStorage.getItem("reg_data"))
+            if (lData.email != null) {
+                $("#fullnameTxt").val(lData.name);
+                $("#phoneTxt").val(lData.phone);
+                $("#genderTxt").val(lData.gender);
+                $("#martialTxt").val(lData.marital);
+                $("#dobTxt").val(lData.dob);
+                $("#emailTxt").val(lData.email);
+                $("#passwordTxt").val(lData.password);
+            }
+        }
+
+        console.log(lData)
+
+        function saveData() {
+            lData.name =  $("#fullnameTxt").val();
+            lData.phone =  $("#phoneTxt").val();
+            lData.gender =  $("#genderTxt").val();
+            lData.marital =  $("#martialTxt").val();
+            lData.dob =  $("#dobTxt").val();
+            lData.email =  $("#emailTxt").val();
+            lData.password =  $("#passwordTxt").val();
+            console.log(lData);
+            localStorage.setItem("reg_data", JSON.stringify(lData))
+            return false
+        }
+    </script> }}

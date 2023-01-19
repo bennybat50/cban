@@ -1,0 +1,53 @@
+         <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h4 class="card-title">All Recent Referrals</h4>
+                    </div>
+                    <!--end col-->
+                   
+                </div>
+                <!--end row-->
+            </div>
+            <!--end card-header-->
+            <div class="card-body">
+                <div class="table-responsive browser_users">
+                    <table class="table mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="border-top-0">Full name</th>
+                                <th class="border-top-0">Email</th>
+                                <th class="border-top-0">Phone</th>
+                                <th class="border-top-0">Gender</th>
+                                {{#if status }}
+                                <th class="border-top-0">Action</th>
+                                {{/if  }}
+
+                            </tr>
+                            <!--end tr-->
+                        </thead>
+                        <tbody>
+                            {{#each referrers  }}
+                            <tr>
+                                <td>{{ full_name }}</td>
+                                <td>{{ email }}</td>
+                                <td>{{ phone }}</td>
+                                <td>{{ gender }}</td>
+                                 {{#if status }}
+                                <td><a href="/member/verify?member_id={{ member_id }}&active=yes" class="btn btn-sm btn-success">Verify</a> <a href="/member/verify?member_id={{ member_id }},active=no" class="btn btn-sm btn-warning">Reject</a></td>
+                                {{/if  }}
+                            </tr>
+                            <!--end tr-->
+                            {{/each  }}
+                          
+
+                            <!--end tr-->
+                        </tbody>
+                    </table>
+                    <!--end table-->
+                </div>
+                <!--end /div-->
+            </div>
+            <!--end card-body-->
+        </div>
+        <!--end card-->

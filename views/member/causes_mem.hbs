@@ -1,0 +1,95 @@
+<style>
+    .title {
+        display: block;
+        /* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 2.6em;
+        line-height: 1.2em;
+        font-weight: 700;
+    }
+
+    .event-date-input {
+        display: hidden !important;
+    }
+
+    .descp {
+        display: block;
+        /* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 4.9em;
+        line-height: 1.5em;
+    }
+</style>
+ <div class="col-auto"> <a href="/member/active-causes" class="btn btn-sm btn-outline-primary">
+                    <span class="day-name" id="Day_Name">View All Active</span>&nbsp;
+                    <i data-feather="credit-card" class="align-self-center icon-xs ms-1"></i>
+                </a></div>
+                <br>
+                <br>
+
+<div class="row">
+    {{#each causes  }}
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="pricingTable1 text-center">
+                    <img src="{{ resource }}" alt="" class="" height="120">
+                    <h3 class="mb-0 title">{{ caption }} </h3>
+                    <hr class="hr-dashed my-4">
+                    <p class="descp">{{descp}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias magnam veritatis corporis recusandae illo pariatur ex, ipsam quaerat excepturi sed molestias iste. Dicta nisi, aliquid laboriosam cupiditate magnam hic autem?</p>
+                   
+                    <a href="#" class="btn btn-primary w-100 btn-skew btn-outline-dashed py-2 " data-bs-toggle="modal"
+                        data-bs-target="#createNewsLarge"><span>Donate for cause</span></a>
+                </div>
+                <!--end pricingTable-->
+            </div>
+            <!--end card-body-->
+        </div>
+        <!--end card-->
+    </div>
+    {{/each  }}
+    <!--end col-->
+
+</div>
+
+
+
+<div class="modal fade" id="createNewsLarge" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title m-0" id="myLargeModalLabel">Make Doantion for Cause</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!--end modal-header-->
+            <div class="modal-body">
+                <form class="form-parsley" id="form" action="/subscription" method="post">
+
+                     <div class="form-group">
+                        <label class="form-label text-dark">Amount for Cause</label>
+                        <div>
+                             <input type="number" id="titleTxt" name="amount" class="form-control" required
+                        placeholder="Enter Amount" />
+                        </div>
+                    </div>
+
+
+            </div>
+            <!--end modal-body-->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm">Donate</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+            </form>
+            <!--end modal-footer-->
+        </div>
+        <!--end modal-content-->
+    </div>
+    <!--end modal-dialog-->
+</div>
+<!--end modal-->

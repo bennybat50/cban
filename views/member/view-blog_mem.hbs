@@ -1,0 +1,65 @@
+<style>
+    img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+</style>
+
+<div class="card">
+    <div class="card-header">
+    </div>
+    <!--end card-header-->
+    <div class="card-body ">
+        <div class="row mb-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="accordion-item">
+                    <div class="card-body ">
+                        <img src="{{aNewsData.resource}}" alt="">
+                        <br><br>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="badge bg-primary font-20">{{ aNewsData.category }}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span class=""><i class="far fa-calendar me-1"></i> {{
+                                            aNewsData.event_start_date }}</span>
+                                    </div>
+                                </div>
+                                <h1 class="m-0 fw-semibold text-dark font-24 mt-3">
+                                    {{aNewsData.caption}}</h1>
+
+
+                            </div>
+
+                        </div>
+
+                        <hr class="hr-dashed hr-menu">
+
+                       <p>{{aNewsData.content}}</p>
+
+                    </div>
+
+
+
+
+                    <!--end card-->
+                </div>
+                <!--accordion end-->
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+
+
+
+    </div>
+    <!--end card-body-->
+</div>
+<!--end card-->

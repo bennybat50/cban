@@ -1,0 +1,129 @@
+<div class="container">
+    <div class="row d-flex justify-content-center vh-100">
+        <div class="col-10 align-self-center">
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <div class="card card-top">
+
+                        <div class="card-body p-0">
+                            <div class="row">
+                                <div class="col-md-2 text-center">
+                                     <a href="/register" class=""><i class=" fas fa-arrow-left  pt-4"></i></a>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="text-center p-2">
+                                        <h4 class="mt-1 mb-1 fw-semibold  font-17">2/3</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                </div>
+                            </div>
+                            <!-- Tab panes -->
+                            <div class="tab-content pt-0">
+                                <div class="tab-pane active " id="Register_Tab" role="tabpanel">
+
+                                    <div class="row ">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <h4 class="mb-2 fw-bold  font-30 text-center"> Other information</h4>
+                                            <p class="font-15  mb-0 text-center">Please provide other informations so we
+                                                can create your account.
+                                            </p>
+                                            <br>
+                                            <form class="form-parsley" id="form" onsubmit="saveData()"
+                                                action="register-complete">
+                                                <div class="form-group">
+                                                    <label class="form-label text-dark">Name of Bank</label>
+                                                    <div>
+                                                        <input type="text" id="bankTxt" class="form-control" required
+                                                            placeholder="Enter your the name of your bank" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label text-dark">Current Parish in place of
+                                                        residence</label>
+                                                    <div>
+                                                        <input type="text" id="parishTxt" class="form-control" required
+                                                            placeholder="Enter your current parish in place of residence" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label text-dark">Diocese</label>
+                                                    <div>
+                                                        <input type="text" id="dioceseTxt" class="form-control" required
+                                                            placeholder="Diocese" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label text-dark">Branch(Work Address)</label>
+                                                    <textarea required class="form-control" id="workTxt"
+                                                        placeholder="Enter Branch(Work Address)" rows="3"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label text-dark">Home Address</label>
+                                                    <textarea required class="form-control"
+                                                        placeholder="Enter Home Address" id="homeTxt"
+                                                        rows="3"></textarea>
+                                                </div>
+                                                <!--end form-group-->
+                                                <div class="text-center mb-2">
+                                                    <button type="submit" id="btnNext" class="btn btn-primary btn-lg ">
+                                                        Next Step </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!--end card-body-->
+                      
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->
+</div>
+<!--end container-->
+<!-- End Log In page -->
+ <script src="/js/jquery.min.js"></script>
+        <script>
+            
+
+
+
+
+
+        let lData = {};
+        if (localStorage.getItem("reg_data") != null) {
+            lData = JSON.parse(localStorage.getItem("reg_data"))
+            if (lData.bank != null) {
+                $("#bankTxt").val(lData.bank);
+                $("#parishTxt").val(lData.parish);
+                $("#dioceseTxt").val(lData.diocese);
+                $("#workTxt").val(lData.work);
+                $("#homeTxt").val(lData.home);
+                
+            }
+        }
+
+        console.log(lData)
+
+        function saveData() {
+            lData.bank =  $("#bankTxt").val();
+            lData.parish =  $("#parishTxt").val();
+            lData.diocese =  $("#dioceseTxt").val();
+            lData.work =  $("#workTxt").val();
+            lData.home =  $("#homeTxt").val();
+            console.log(lData);
+            localStorage.setItem("reg_data", JSON.stringify(lData))
+            return false
+        }
+    </script>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from phantom-themes.com/metro/theme/templates/admin1/layout-fixed-sidebar-header.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Sep 2021 11:49:52 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Admin Dashboard Template">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>{{pagetitle }}</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/metisMenu.min.css" rel="stylesheet">
+    <link href="/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- DataTables -->
+    <link href="/plugins/datatables/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/datatables/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <!-- Responsive datatable examples -->
+    <link href="/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/circle.css" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link href="/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/app.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .datatable-buttons thead {
+            background-color: black;
+            color: white;
+        }
+
+        .datatable-buttons tfoot {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Left Sidenav -->
+    <div class="left-sidenav">
+        <!-- LOGO -->
+        <div class="brand">
+            <a href="/" class="logo">
+                <span>
+                    {{!-- <img src="/img/logo.png" alt="logo-small" class="logo-sm"> --}}
+                    <h3 class="text-white">CBAN-ADMIN</h3>
+                </span>
+                <span>
+                </span>
+            </a>
+        </div>
+        <!--end logo-->
+        <div class="menu-content h-100" data-simplebar>
+            <ul class="metismenu left-sidenav-menu">
+
+                <li class="menu-label mt-0">Main</li>
+                <hr class="hr-dashed hr-menu">
+                <li><a href="/"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Dashboard</span></a></li>
+                <li> <a href="/news"> <i data-feather="message-circle" class="align-self-center menu-icon"></i><span>News And Events</span></a> </li>
+                <li class="menu-label my-2">Accounts</li>
+                <hr class="hr-dashed hr-menu">
+                <li><a href="/members"> <i data-feather="users" class="align-self-center menu-icon"></i><span>All Members</span></a></li>
+                <li><a href="/unverified"> <i data-feather="users" class="align-self-center menu-icon"></i><span>Unverfied Members</span></a> </li>
+                 <li class="menu-label my-2">Manage Pages</li>
+                <hr class="hr-dashed hr-menu">
+                <li>
+                    <a href="javascript: void(0);"><i data-feather="lock"
+                            class="align-self-center menu-icon"></i><span>All Pages</span><span class="menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item"><a class="nav-link" href="/manage-home"><i
+                                    class="ti-control-record"></i>Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/manage-about"><i
+                                    class="ti-control-record"></i>About</a></li>
+                         <li class="nav-item"><a class="nav-link" href="/manage-contact"><i
+                                    class="ti-control-record"></i>Contact</a></li>
+                    </ul>
+                </li>
+             
+
+
+                <li class="menu-label my-2">Account Activities</li>
+
+                <hr class="hr-dashed hr-menu">
+                 <li>
+                    <a href="javascript: void(0);"><i data-feather="credit-card"
+                            class="align-self-center menu-icon"></i><span>Payments</span><span class="menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item"><a class="nav-link" href="/Causes"><i
+                                    class="ti-control-record"></i>Causes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/subscriptions"><i
+                                    class="ti-control-record"></i>Subscription/Renewal</a></li>
+                         <li class="nav-item"><a class="nav-link" href="/givings"><i
+                                    class="ti-control-record"></i>All Givings</a></li>
+                    </ul>
+                </li>
+                {{!-- <li><a href="/causes"> <i data-feather="activity" class="align-self-center menu-icon"></i><span>Causes</span></a></li> --}}
+                <li><a href="/projects"> <i data-feather="briefcase" class="align-self-center menu-icon"></i><span>Projects</span></a> </li>
+                <li class="menu-label my-2">Security </li>
+
+                <hr class="hr-dashed hr-menu">
+                <li> <a href="/password"> <i data-feather="lock" class="align-self-center menu-icon"></i><span>Password</span></a> </li>
+                <br>
+                <li class="menu-label my-2">Exit App</li>
+                <div class="update-msg text-center">
+
+                    <a href="/logout" class="btn btn-outline-danger btn-sm"> <i data-feather="log-out"
+                            class="align-self-center menu-icon"></i> Logout</a>
+                    
+                </div>
+            </ul>
+
+
+        </div>
+    </div>
+
+    <div class="page-wrapper">
+        <!-- Top Bar Start -->
+        <div class="topbar">
+            <!-- Navbar -->
+            <nav class="navbar-custom">
+                <ul class="list-unstyled topbar-nav float-end mb-0">
+
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-bs-toggle="dropdown"
+                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <span class="ms-1 nav-user-name hidden-sm pr-3">{{ username }}</span>
+                            <img src="/images/users/default-user.png" alt="profile-user"
+                                class="rounded-circle thumb-xs" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="profile"><i data-feather="user"
+                                    class="align-self-center icon-xs icon-dual me-1"></i> Profile</a>
+                            <a class="dropdown-item" href="profile"><i data-feather="settings"
+                                    class="align-self-center icon-xs icon-dual me-1"></i> Settings</a>
+                            <div class="dropdown-divider mb-0"></div>
+                            <a class="dropdown-item" href="/logout"><i
+                                    data-feather="power" class="align-self-center icon-xs icon-dual me-1"></i>
+                                Logout</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <!--end topbar-nav-->
+
+
+                <ul class="list-unstyled topbar-nav mb-0">
+                    <li>
+                        <button class="nav-link button-menu-mobile">
+                            <i data-feather="menu" class="align-self-center topbar-icon"></i>
+                        </button>
+                    </li>
+
+
+                </ul>
+            </nav>
+            <!-- end navbar-->
+        </div>
+        <!-- Top Bar End -->
+        <!-- Page Content-->
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <div class="row">
+                                <div class="col">
+                                    <h4 class="page-title">{{ pagetitle }}</h4>
+
+                                </div>
+                                <!--end col-->
+
+                            </div>
+                            <!--end row-->
+                        </div>
+                        <!--end page-title-box-->
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        {{#if success}}
+                        <div class="alert alert-primary alert-dismissible fade show border-0 b-round" role="alert">
+                            <strong>Success 👍</strong> {{ success }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {{/if }}
+                        {{#if error}}
+                        <div class="alert alert-danger alert-dismissible fade show border-0 b-round" role="alert">
+                            <strong>Error</strong> {{ error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {{/if }}
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <main>
+                    {{{body}}}
+                </main>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/skippr.min.js"></script>
+    <script>
+        $("#newsSlider").skippr({
+            transition: 'slide',
+            speed: 1000,
+            easing: 'easeOutQuart',
+            navType: '',
+            childrenElementType: 'div',
+            arrows: false,
+            autoPlay: true,
+            autoPlayDuration: 5000,
+            keyboardOnAlways: true,
+            hidePrevious: false
+
+        });
+    </script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/metismenu.min.js"></script>
+    <script src="/js/waves.js"></script>
+    <script src="/js/feather.min.js"></script>
+    <script src="/js/simplebar.min.js"></script>
+    <script src="/js/moment.js"></script>
+
+
+    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/plugins/datatables/dataTables.bootstrap5.min.js"></script>
+    <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+    <script src="/plugins/apex-charts/apexcharts.min.js"></script>
+    <script src="/pages/jquery.sales_dashboard.init.js"></script>
+    <script src="/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="/plugins/jvectormap/jquery-jvectormap-us-aea-en.js"></script>
+    <script src="/pages/jquery.analytics_dashboard.init.js"></script>
+    <script src="/plugins/dropify/js/dropify.min.js"></script>
+    <script src="/pages/jquery.form-upload.init.js"></script>
+    <script src="/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="/plugins/datatables/buttons.bootstrap5.min.js"></script>
+    <script src="/plugins/datatables/jszip.min.js"></script>
+    <script src="/plugins/datatables/pdfmake.min.js"></script>
+    <script src="/plugins/datatables/vfs_fonts.js"></script>
+    <script src="/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="/plugins/datatables/buttons.print.min.js"></script>
+    <script src="/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="/pages/jquery.datatable.init.js"></script>
+    <script src="/pages/jquery.forms-advanced.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/plugins/parsleyjs/parsley.min.js"></script>
+    <script src="/pages/jquery.validation.init.js"></script>
+  
+
+</body>
+
+<!-- Mirrored from phantom-themes.com/metro/theme/templates/admin1/layout-fixed-sidebar-header.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Sep 2021 11:49:52 GMT -->
+
+</html>

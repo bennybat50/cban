@@ -1,0 +1,17 @@
+#  Template NodeJS build
+
+#  This template allows you to validate your NodeJS code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: node:16
+
+pipelines:
+  default:
+    - parallel:
+        - step:
+            name: Build and Test
+            caches:
+              - node
+            script:
+              - npm install
+              - git push https://heroku:f9f05575-9f02-49a0-9e10-fc047917e1e7@git.heroku.com/cban-app.git HEAD
